@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1">
+  <defs>
+    <symbol id="qrCode">
+      <mask id="qrMask">
+        <image
+          width="1"
+          href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhAQMAAABtKlAsAAAABlBMVEUAAAD///+l2Z/dAAAAAnRSTlP//8i138cAAAAJcEhZcwAACxIAAAsSAdLdfvwAAADJSURBVAiZY2CUs3KoZ6g1l42vZ3A1kQgEkh/WgMi98heB4lrzgOKMoaFANf8tmv7/ZziqK9JTz5B8f9XceoaTsYe9/jMcq3fYWc/wZzrT/v8McvdNztYzBIbdrfjP8OueYM9/Bo5q/4X1DEmsj+L/Myw1sm6pZ1gm7AE0f2/F3aZ6hqDDG2vrGRInFn/6z5C1t7HyP0NiyGSm/wz/ddzLgfZ+CAn5z1A7K78E6B7GTDYgWbdt038GV9sF84HiL7K7/zMwHm+q+Q8Ax4pTn2Z04OUAAAAASUVORK5CYII="
+          style="image-rendering: pixelated" />
+      </mask>
+      <rect width="1" height="1" fill="currentColor" />
+      <rect
+        width="1"
+        height="1"
+        fill="currentColor"
+        mask="url(#qrMask)"
+        style="filter: invert(1)" />
+    </symbol>
+    <symbol id="logo" viewBox="0 0 100 100">
+    
+      <defs>
+        <symbol id="BC-LOGO" viewBox="154.3 0 40 60">
+          <path
+            fill="currentColor"
+            d="M169.783 24.372V0h-6.63l-.016 24.372h6.646Zm20.081-7.02h-16.702v6.647h15.14c3.294 0 4.951 1.514 4.972 4.539v8.087c.021 3.304-1.997 4.954-6.055 4.954l-24.093.005-.005 6.708h26.967c6.587-.085 9.891-3.441 9.912-10.068v-10.55c0-6.881-3.378-10.322-10.136-10.322" />
+          <path
+            fill="currentColor"
+            d="M198.925 53.98v6.217h-44.839c-5.719-.037-8.588-2.986-8.606-8.848V38.125c.036-5.606 2.896-8.419 8.579-8.438h31.37v5.998h-30.442c-2.495 0-3.752 1.37-3.769 4.11v9.803c0 2.903 1.657 4.366 4.971 4.383h42.736Z" />
+          <path fill="#E23D3A" d="M163.582 0h-1.234v24.372h1.234V0Z" />
+          <path fill="#FFD41C" d="M162.347 0h-1.234v24.372h1.234V0Z" />
+          <path fill="currentColor" d="M161.136 0h-1.234v24.372h1.234V0Z" />
+          <path fill="#E23D3A" d="M163.57 41.586h-1.234v6.707h1.234v-6.707Z" />
+          <path fill="#FFD41C" d="M162.336 41.586h-1.234v6.707h1.234v-6.707Z" />
+          <path
+            fill="currentColor"
+            d="M161.125 41.586h-1.234v6.707h1.234v-6.707Z" />
+        </symbol>
+        <symbol id="CAT-EAR" viewBox="0 0 500 500">
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-width="16"
+            d="M 461.996 365.027 C 561.844 284.017 120.507 -25.299 55.001 46.831 C 19.998 94.649 14.708 427.056 92.673 478.716" />
+          <path
+            fill="currentColor"
+            mask="url(#CAT-EAR-INNER-MASK)"
+            d="M 157.455 422.88 C 173.08 363.301 370.936 385.498 375.417 327.353 C 378.336 258.537 145.071 101.418 110.366 118.811 C 74.067 137.003 97.899 410.376 157.455 422.88 Z" />
+          <mask id="CAT-EAR-INNER-MASK">
+            <rect width="500" height="500" fill="white" />
+            <path
+              fill="black"
+              d="M 219.56 126.884 C 220.247 127.743 151.745 150.787 146.021 143.633 C 143.344 150.325 207.694 164.077 208.335 162.473 C 209.334 163.722 168.891 182.085 163.368 175.181 C 163.368 181.837 246.927 196.172 246.927 192.214 C 251.185 198.6 189.845 207.862 186.986 203.574 C 186.986 212.782 337.744 242.01 337.744 239.496 L 219.56 126.884 Z" />
+          </mask>
+        </symbol>
+      </defs>
+      <use
+        href="#CAT-EAR"
+        x="0"
+        y="0"
+        width="33"
+        height="33"
+        transform="scale(1,1)" />
+      <use
+        href="#CAT-EAR"
+        x="-100"
+        y="0"
+        width="33"
+        height="33"
+        transform="scale(-1,1)" />
+      <use href="#BC-LOGO" x="3" y="0" width="100" height="100" />
+    
+    </symbol>
+  </defs>
+  <use
+    href="#qrCode"
+    x="0"
+    y="0"
+    width="1"
+    height="1" />
+  <circle
+    cx="0.5"
+    cy="0.5"
+    r="0.1875"
+    fill="currentColor"
+    style="filter: invert(1)" />
+  <use
+    href="#logo"
+    x="0.375"
+    y="0.375"
+    width="0.25"
+    height="0.25" />
+</svg>

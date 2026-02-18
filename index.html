@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BC Wild Watch</title>
+    <style>
+      body {
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: stretch;
+        gap: 0.1em;
+      }
+      details {
+        border: 0.1em inset currentColor;
+        padding: 0em 1em;
+        & > summary {
+          font-size: x-large;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      <img
+        class="bc-logo"
+        width="50"
+        src="BC Wild Watch Logo.svg"
+        alt="BC Wild Watch Logo" />
+      Welcome to BC Wild Watch
+    </h1>
+    <details id="details-about" open>
+      <summary><b>About Wild Watch App</b></summary>
+      <p>
+        BC Wild Watch is an app where students of
+        <a href="https://www.belgiumcampus.ac.za/">Belgium Campus University</a>
+        can report wildlife encounters on campus so that security personnel can
+        respond and protect students in a timely fashion.
+      </p>
+      <img
+        class="bc-logo"
+        width="400"
+        src="BC Wild Watch Logo.svg"
+        alt="BC Wild Watch Logo" />
+    </details>
+    <details id="details-share" open>
+      <summary><b>Share</b></summary>
+      <h3>
+        Access our app at:
+        <a href="https://bcwildwatch.co.za">bcwildwatch.co.za</a>
+      </h3>
+      <h3>or scan the qrcode</h3>
+      <img
+        width="400"
+        src="BC Wild Watch QRCode.svg"
+        alt="BC Wild Watch QR Code" />
+    </details>
+  </body>
+</html>
