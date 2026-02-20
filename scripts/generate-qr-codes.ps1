@@ -1,7 +1,7 @@
 param(
   [string]$Url = "https://bcwildwatch.co.za",
-  [string]$Name = "images/BC Wild Watch QRCode",
-  [string]$Logo = "images/BC Wild Watch Logo.svg",
+  [string]$Name = "public/BC Wild Watch QRCode",
+  [string]$Logo = "public/BC Wild Watch Logo.svg",
   [double]$LogoSize = 0.25
 )
 
