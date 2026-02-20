@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1">
   <defs>
-    <symbol id="qrCode">
-      <mask id="qrMask">
-        <image
-          width="1"
-          href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhAQMAAABtKlAsAAAABlBMVEUAAAD///+l2Z/dAAAAAnRSTlP//8i138cAAAAJcEhZcwAACxIAAAsSAdLdfvwAAADJSURBVAiZY2CUs3KoZ6g1l42vZ3A1kQgEkh/WgMi98heB4lrzgOKMoaFANf8tmv7/ZziqK9JTz5B8f9XceoaTsYe9/jMcq3fYWc/wZzrT/v8McvdNztYzBIbdrfjP8OueYM9/Bo5q/4X1DEmsj+L/Myw1sm6pZ1gm7AE0f2/F3aZ6hqDDG2vrGRInFn/6z5C1t7HyP0NiyGSm/wz/ddzLgfZ+CAn5z1A7K78E6B7GTDYgWbdt038GV9sF84HiL7K7/zMwHm+q+Q8Ax4pTn2Z04OUAAAAASUVORK5CYII="
-          style="image-rendering: pixelated" />
-      </mask>
-      <rect width="1" height="1" fill="currentColor" />
+    <symbol id="QrCode">
       <rect
         width="1"
         height="1"
         fill="currentColor"
-        mask="url(#qrMask)"
-        style="filter: invert(1)" />
+        mask="url(#QrDotsMask)" />
+      <mask id="QrDotsMask">
+        <image
+          width="1"
+          href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhAQMAAABtKlAsAAAABlBMVEUAAAD///+l2Z/dAAAAAnRSTlP//8i138cAAAAJcEhZcwAACxIAAAsSAdLdfvwAAADJSURBVAiZY2CUs3KoZ6g1l42vZ3A1kQgEkh/WgMi98heB4lrzgOKMoaFANf8tmv7/ZziqK9JTz5B8f9XceoaTsYe9/jMcq3fYWc/wZzrT/v8McvdNztYzBIbdrfjP8OueYM9/Bo5q/4X1DEmsj+L/Myw1sm6pZ1gm7AE0f2/F3aZ6hqDDG2vrGRInFn/6z5C1t7HyP0NiyGSm/wz/ddzLgfZ+CAn5z1A7K78E6B7GTDYgWbdt038GV9sF84HiL7K7/zMwHm+q+Q8Ax4pTn2Z04OUAAAAASUVORK5CYII="
+          style="image-rendering: pixelated; filter: invert(1)" />
+      </mask>
     </symbol>
     <symbol id="logo" viewBox="0 0 100 100">
     
@@ -71,18 +69,22 @@
     
     </symbol>
   </defs>
+  
   <use
-    href="#qrCode"
+    href="#QrCode"
     x="0"
     y="0"
     width="1"
-    height="1" />
-  <circle
+    height="1"
+    mask="url(#logoCutOut)" />
+  <mask id="logoCutOut">
+    <rect width="1" height="1" fill="white" />
+    <circle
     cx="0.5"
     cy="0.5"
     r="0.1875"
-    fill="currentColor"
-    style="filter: invert(1)" />
+    fill="black" />
+  </mask>
   <use
     href="#logo"
     x="0.375"
