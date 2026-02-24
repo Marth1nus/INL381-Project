@@ -10,7 +10,7 @@
   - [ ] Decide if sticking with public sharepoint is fine. (more work if we have to change it)
 - [ ] (10%) Integration of the system
   - [ ] Figure out what unclear instructions means
-  - [ ] Integrate Power Apps with webpage
+  - [x] Integrate Power Apps with webpage
 - [x] (10%) Innovation in Platform & Hosting Selection
   - [x] Decide on deployment strategy (Answer: Github pages + Github actions)
 - [ ] (10%) Deployment Documentation (5-page report)
