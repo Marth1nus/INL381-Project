@@ -1,32 +1,25 @@
 # Tasks
 
-- [ ] (10%) Public Web Deployment
-  - [ ] Write `.github/workflows/deploy.yml`
-  - [ ] Enable Github Pages From Workflow on repo
+- [x] (10%) Public Web Deployment
+  - [x] Write `.github/workflows/deploy.yml`
+  - [x] Enable Github Pages From Workflow on repo
 - [ ] (10%) Microsoft 365 A3 Authentication Integration
   - [ ] Register A3 token for our app
   - [ ] Add `Login With Microsoft` to our webpage
-  - [ ] Add `<iframe>` of the PowerApps app.
 - [ ] (10%) Secure & Scalable Data Access Layer
   - [ ] Decide if sticking with public sharepoint is fine. (more work if we have to change it)
 - [ ] (10%) Integration of the system
   - [ ] Figure out what unclear instructions means
+  - [ ] Integrate Power Apps with webpage
 - [x] (10%) Innovation in Platform & Hosting Selection
-  - [x] Decide on deployment strategy
-    - Answer: Github pages with Github actions to build a static web page
+  - [x] Decide on deployment strategy (Answer: Github pages + Github actions)
 - [ ] (10%) Deployment Documentation (5-page report)
   - [ ] Make 5-page document explaining 1-page worth of reasons
-    - Idea: Maybe include a `.github/workflows/deploy.yml` in the document to take up a page or two?
-  - [ ] Make Architecture Diagram
 - [ ] (10%) Leadership & Team Coordination (RACI)
-  - [ ] Define tasks in order to make RACI diagram?
-  - [ ] Make RACI diagram
 - [ ] (10%) Architecture Diagram Quality
-  - tasks???
+  - [ ] Make Architecture Diagram
 - [x] (10%) QrCode implementation
-  - [x] Get QrCode generation tool
-    - Answer: `qrencode`
-  - [?] Get Logo for making QrCode pretty
+  - [x] Get QrCode generation tool (Answer: powershell script using cli tool `wsl qrencode`)
 - [ ] (10%) Live Deployment Demonstration
   - [ ] Demonstration sequence plan
   - [ ] Demonstration sequence execution (practice recording)
