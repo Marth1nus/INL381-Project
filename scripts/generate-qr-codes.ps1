@@ -14,7 +14,6 @@ $logo_svg_source = Get-Content $logo -Raw
 
 wsl qrencode $Url -o "$Name.png" -m 0 -s 1 -l H
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-$qr_png_base64 = [Convert]::ToBase64String([IO.File]::ReadAllBytes("$Name.png"))
 
 $qr_svg_source = @"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -29,7 +28,7 @@ $qr_svg_source = @"
       <mask id="QrDotsMask">
         <image
           width="1"
-          href="data:image/png;base64,$qr_png_base64"
+          href="data:image/png;base64,$([Convert]::ToBase64String([IO.File]::ReadAllBytes("$Name.png")))"
           style="image-rendering: pixelated; filter: invert(1)" />
       </mask>
     </symbol>
