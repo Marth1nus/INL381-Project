@@ -16,8 +16,8 @@
 - [ ] (10%) Deployment Documentation (5-page report)
   - [ ] Make 5-page document explaining 1-page worth of reasons
 - [ ] (10%) Leadership & Team Coordination (RACI)
-- [x ] (10%) Architecture Diagram Quality
-  - [x ] Make Architecture Diagram
+- [x] (10%) Architecture Diagram Quality
+  - [x] Make Architecture Diagram
 - [x] (10%) QrCode implementation
   - [x] Get QrCode generation tool (Answer: powershell script using cli tool `wsl qrencode`)
 - [ ] (10%) Live Deployment Demonstration
