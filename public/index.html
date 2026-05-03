@@ -1,1370 +1,1162 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>BC WildWatch | Belgium Campus iTversity</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-
-  <style>
-    :root {
-      --accent-teal: #4ac1c1;
-      --accent-magenta: #ad1d5a;
-      --accent-teal-soft: #e6f7f7;
-      --accent-magenta-soft: #ffe6f0;
-      --gray-900: #111827;
-      --gray-700: #4b5563;
-      --gray-500: #6b7280;
-      --gray-200: #e5e7eb;
-      --gray-100: #f3f4f6;
-      --white: #ffffff;
-      --radius-lg: 20px;
-      --radius-pill: 999px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
-      --transition-fast: 0.18s ease-out;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-      color: var(--gray-900);
-      background-color: var(--white);
-      min-height: 100vh;
-    }
-
-    .page-shell {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: rgba(255, 255, 255, 0.94);
-      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
-    }
-
-    .nav-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0.8rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.25rem;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      min-width: 0;
-    }
-
-    .brand-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 16px;
-      overflow: hidden;
-      background: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
-      border: 1px solid rgba(229, 231, 235, 0.9);
-    }
-
-    .brand-logo img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--gray-900);
-    }
-
-    .brand-subtitle {
-      font-size: 0.73rem;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-      color: var(--accent-magenta);
-    }
-
-    nav ul {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      font-size: 0.85rem;
-    }
-
-    nav a {
-      color: var(--gray-700);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 500;
-      position: relative;
-      padding-bottom: 0.1rem;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.2rem;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(to right, var(--accent-magenta), var(--accent-teal));
-      border-radius: 999px;
-      transition: width var(--transition-fast);
-    }
-
-    nav a:hover::after,
-    nav a:focus-visible::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .nav-pill {
-      font-size: 0.7rem;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(209, 213, 219, 0.9);
-      padding: 0.35rem 0.8rem;
-      color: var(--gray-500);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      white-space: nowrap;
-      background: var(--gray-100);
-    }
-
-    .btn-primary {
-      border-radius: var(--radius-pill);
-      border: none;
-      padding: 0.55rem 1.2rem;
-      background: linear-gradient(135deg, var(--accent-magenta), var(--accent-teal));
-      color: var(--white);
-      font-weight: 700;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      box-shadow: 0 10px 26px rgba(173, 29, 90, 0.35);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
-        filter var(--transition-fast), background-position 0.25s ease-out;
-      background-size: 180% 180%;
-      background-position: 0% 50%;
-    }
-
-    .btn-primary span {
-      transform: translateY(0.5px);
-    }
-
-    .btn-primary:hover {
-      background-position: 100% 50%;
-      transform: translateY(-1px);
-      filter: brightness(1.03);
-      box-shadow: 0 16px 38px rgba(173, 29, 90, 0.42);
-    }
-
-    .btn-primary:active {
-      transform: translateY(0);
-      box-shadow: 0 8px 18px rgba(173, 29, 90, 0.35);
-    }
-
-    main {
-      flex: 1;
-    }
-
-    .hero {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 2.4rem 1.5rem 2.4rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
-      gap: 2.4rem;
-      align-items: center;
-      position: relative;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: -40px;
-      background:
-        radial-gradient(circle at top left, rgba(74, 193, 193, 0.12), transparent 60%),
-        radial-gradient(circle at 110% 0, rgba(173, 29, 90, 0.08), transparent 45%);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .hero-copy {
-      max-width: 620px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.2rem 0.7rem 0.2rem 0.25rem;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(209, 213, 219, 0.9);
-      background: rgba(243, 244, 246, 0.9);
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--gray-500);
-      margin-bottom: 0.8rem;
-    }
-
-    .eyebrow-pill {
-      background: var(--accent-teal-soft);
-      border-radius: var(--radius-pill);
-      padding: 0.2rem 0.7rem;
-      color: var(--accent-magenta);
-      font-weight: 600;
-      border: 1px solid rgba(74, 193, 193, 0.5);
-    }
-
-    .hero-title {
-      font-size: clamp(2.1rem, 3vw + 1.2rem, 3rem);
-      line-height: 1.05;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-      color: var(--gray-900);
-      margin: 0 0 0.8rem;
-    }
-
-    .hero-highlight {
-      background: linear-gradient(to right, var(--accent-magenta), var(--accent-teal));
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      font-size: 0.98rem;
-      line-height: 1.6;
-      color: var(--gray-700);
-      max-width: 34rem;
-      margin-bottom: 1.3rem;
-    }
-
-    .hero-metadata {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      margin-bottom: 1.4rem;
-      font-size: 0.8rem;
-      color: var(--gray-500);
-    }
-
-    .meta-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: var(--radius-pill);
-      background: var(--white);
-      border: 1px solid rgba(209, 213, 219, 0.9);
-    }
-
-    .meta-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent-teal);
-      box-shadow: 0 0 0 4px rgba(74, 193, 193, 0.28);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      align-items: center;
-      margin-bottom: 1.3rem;
-    }
-
-    .ghost-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--gray-700);
-      text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.45rem 0.9rem;
-      border-radius: var(--radius-pill);
-      border: 1px dashed rgba(209, 213, 219, 0.9);
-      background: var(--white);
-      transition: background var(--transition-fast), border-color var(--transition-fast),
-        color var(--transition-fast), box-shadow var(--transition-fast);
-    }
-
-    .ghost-link:hover {
-      background: var(--accent-teal-soft);
-      border-style: solid;
-      border-color: rgba(74, 193, 193, 0.7);
-      box-shadow: 0 6px 18px rgba(74, 193, 193, 0.25);
-    }
-
-    .ghost-link-code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-        "Courier New", monospace;
-      font-size: 0.8rem;
-      padding: 0.2rem 0.5rem;
-      border-radius: 0.5rem;
-      background: var(--gray-100);
-      border: 1px solid rgba(209, 213, 219, 0.9);
-      color: var(--accent-magenta);
-    }
-
-    /* Animal strip */
-
-    .animal-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-    }
-
-    .animal-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.32rem 0.7rem;
-      border-radius: var(--radius-pill);
-      background: var(--white);
-      border: 1px solid rgba(229, 231, 235, 0.9);
-      font-size: 0.78rem;
-      color: var(--gray-700);
-    }
-
-    .animal-icon {
-      width: 20px;
-      height: 20px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.98rem;
-      background: var(--accent-teal-soft);
-    }
-
-    .animal-tag.bird .animal-icon {
-      background: var(--accent-magenta-soft);
-    }
-
-    .animal-tag.mammal .animal-icon {
-      background: var(--accent-teal-soft);
-    }
-
-    .animal-tag.owl .animal-icon {
-      background: #fff4cc;
-    }
-
-    .animal-tag.duck .animal-icon {
-      background: #e7f5ff;
-    }
-
-    .animal-tag.fish .animal-icon {
-      background: #e0f2fe;
-    }
-
-    /* QR + form panel */
-
-    .hero-panel {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 1.1rem 1.2rem 1.4rem;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(229, 231, 235, 0.95);
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-panel::before {
-      content: "";
-      position: absolute;
-      inset: -30%;
-      background:
-        radial-gradient(circle at top left, rgba(74, 193, 193, 0.16), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(173, 29, 90, 0.14), transparent 55%);
-      pointer-events: none;
-      opacity: 0.9;
-    }
-
-    .hero-panel-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .qr-section {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .qr-card {
-      width: 128px;
-      height: 128px;
-      border-radius: 24px;
-      padding: 0.6rem;
-      background: var(--white);
-      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(229, 231, 235, 0.95);
-    }
-
-    .qr-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 18px;
-    }
-
-    .qr-copy-title {
-      font-size: 0.82rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-magenta);
-      margin-bottom: 0.3rem;
-      font-weight: 600;
-    }
-
-    .qr-copy-main {
-      font-size: 0.95rem;
-      color: var(--gray-900);
-      margin-bottom: 0.35rem;
-      font-weight: 600;
-    }
-
-    .qr-copy-note {
-      font-size: 0.78rem;
-      color: var(--gray-500);
-    }
-
-    .qr-badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem 0.8rem;
-      margin-top: 0.7rem;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      color: var(--gray-500);
-    }
-
-    .qr-badge {
-      padding: 0.18rem 0.6rem;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(209, 213, 219, 0.9);
-      background: var(--gray-100);
-    }
-
-    .form-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gray-900);
-      margin-bottom: 0.8rem;
-    }
-
-    form {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem 0.9rem;
-      font-size: 0.8rem;
-    }
-
-    .field-full {
-      grid-column: 1 / -1;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 0.2rem;
-      font-size: 0.76rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gray-500);
-    }
-
-    label span {
-      color: var(--accent-magenta);
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      border-radius: 0.7rem;
-      border: 1px solid rgba(209, 213, 219, 0.9);
-      padding: 0.5rem 0.55rem;
-      background: var(--gray-100);
-      color: var(--gray-900);
-      font-size: 0.8rem;
-      font-family: inherit;
-      outline: none;
-      transition: border-color var(--transition-fast), box-shadow var(--transition-fast),
-        background var(--transition-fast), transform var(--transition-fast);
-    }
-
-    input::placeholder,
-    textarea::placeholder {
-      color: rgba(156, 163, 175, 0.95);
-    }
-
-    textarea {
-      min-height: 68px;
-      resize: vertical;
-    }
-
-    input:focus-visible,
-    select:focus-visible,
-    textarea:focus-visible {
-      border-color: var(--accent-teal);
-      box-shadow: 0 0 0 1px rgba(74, 193, 193, 0.5);
-      background: var(--white);
-      transform: translateY(-0.5px);
-    }
-
-    .form-row-inline {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.75rem;
-    }
-
-    .form-footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      align-items: center;
-      margin-top: 0.4rem;
-      grid-column: 1 / -1;
-    }
-
-    .form-hint {
-      font-size: 0.72rem;
-      color: var(--gray-500);
-    }
-
-    .form-warning {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.7rem;
-      color: var(--accent-magenta);
-      margin-top: 0.1rem;
-    }
-
-    .form-warning-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: var(--accent-magenta);
-    }
-
-    /* Sections */
-
-    .sections {
-      max-width: 1120px;
-      margin: 0 auto 2.4rem;
-      padding: 0 1.5rem 1rem;
-    }
-
-    .section-card {
-      border-radius: 24px;
-      background: var(--white);
-      border: 1px solid rgba(229, 231, 235, 0.95);
-      padding: 1.4rem 1.4rem 1.5rem;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .section-title {
-      font-size: 0.96rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--gray-900);
-    }
-
-    .section-kicker {
-      font-size: 0.72rem;
-      color: var(--accent-teal);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    .section-subtitle {
-      font-size: 0.88rem;
-      color: var(--gray-500);
-      margin-bottom: 1rem;
-    }
-
-    /* Sightings list */
-
-    .sightings-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 0.9rem;
-    }
-
-    .sighting-card {
-      border-radius: 18px;
-      border: 1px solid rgba(229, 231, 235, 0.95);
-      background: var(--gray-100);
-      padding: 0.7rem 0.8rem 0.85rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .sighting-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(74, 193, 193, 0.12), transparent 65%);
-      pointer-events: none;
-    }
-
-    .sighting-chip-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--gray-500);
-      position: relative;
-      z-index: 1;
-    }
-
-    .chip {
-      padding: 0.16rem 0.5rem;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(209, 213, 219, 0.9);
-      background: var(--white);
-    }
-
-    .chip-eco {
-      border-color: rgba(74, 193, 193, 0.8);
-      color: var(--accent-teal);
-      background: #f0fbfb;
-    }
-
-    .sighting-title {
-      font-size: 0.86rem;
-      font-weight: 600;
-      color: var(--gray-900);
-      position: relative;
-      z-index: 1;
-    }
-
-    .sighting-meta {
-      font-size: 0.73rem;
-      color: var(--gray-500);
-      position: relative;
-      z-index: 1;
-    }
-
-    .sighting-body {
-      font-size: 0.78rem;
-      color: var(--gray-700);
-      margin-top: 0.15rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .sighting-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-top: 0.25rem;
-      font-size: 0.7rem;
-      color: var(--gray-500);
-      position: relative;
-      z-index: 1;
-    }
-
-    .sighting-badge {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--accent-magenta);
-    }
-
-    /* Footer */
-
-    footer {
-      border-top: 1px solid rgba(229, 231, 235, 0.95);
-      background: var(--white);
-      padding: 0.9rem 1.5rem 1.2rem;
-      font-size: 0.75rem;
-      color: var(--gray-500);
-    }
-
-    .footer-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-    }
-
-    .footer-links span {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      cursor: default;
-    }
-
-    .footer-links a {
-      color: var(--gray-500);
-      text-decoration: none;
-      position: relative;
-    }
-
-    .footer-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.12rem;
-      width: 0;
-      height: 1px;
-      background: rgba(156, 163, 175, 0.9);
-      transition: width var(--transition-fast);
-    }
-
-    .footer-links a:hover::after {
-      width: 100%;
-    }
-
-    /* Toast */
-
-    .toast {
-      position: fixed;
-      right: 1rem;
-      bottom: 1rem;
-      max-width: 260px;
-      padding: 0.7rem 0.9rem;
-      border-radius: 0.9rem;
-      background: rgba(74, 193, 193, 0.98);
-      color: #022c22;
-      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
-      font-size: 0.78rem;
-      display: flex;
-      gap: 0.6rem;
-      align-items: flex-start;
-      transform: translateY(140%);
-      opacity: 0;
-      pointer-events: none;
-      transition: transform 0.25s ease-out, opacity 0.25s ease-out;
-      z-index: 40;
-    }
-
-    .toast.visible {
-      transform: translateY(0%);
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .toast-icon {
-      width: 16px;
-      height: 16px;
-      border-radius: 999px;
-      border: 2px solid #022c22;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.65rem;
-    }
-
-    .toast-body {
-      flex: 1;
-    }
-
-    .toast-title {
-      font-weight: 600;
-      margin-bottom: 0.1rem;
-    }
-
-    .toast-meta {
-      opacity: 0.9;
-    }
-
-    /* Responsive */
-
-    @media (max-width: 960px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-        padding-top: 1.6rem;
+  <head>
+    <meta charset="UTF-8" />
+    <title>BC WildWatch | Belgium Campus iTversity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" />
+
+    <style>
+      :root {
+        --accent-teal: #4ac1c1;
+        --accent-magenta: #ad1d5a;
+        --accent-teal-soft: #e6f7f7;
+        --accent-magenta-soft: #ffe6f0;
+        --gray-900: #111827;
+        --gray-700: #4b5563;
+        --gray-500: #6b7280;
+        --gray-200: #e5e7eb;
+        --gray-100: #f3f4f6;
+        --white: #ffffff;
+        --radius-lg: 20px;
+        --radius-pill: 999px;
+        --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
+        --transition-fast: 0.18s ease-out;
       }
 
-      .hero-panel {
-        order: -1;
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          'Montserrat',
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+        color: var(--gray-900);
+        background-color: var(--white);
+        min-height: 100vh;
+      }
+
+      .page-shell {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(16px);
+        background: rgba(255, 255, 255, 0.94);
+        border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+        overflow: hidden;
+        height: auto;
+        transition: height 0.2s ease;
+      }
+
+      header.hidden {
+        height: 0;
+        overflow: hidden;
+      }
+
+      .nav-inner {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0.8rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.25rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        min-width: 0;
+      }
+
+      .brand-logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 16px;
+        overflow: hidden;
+        background: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
+        border: 1px solid rgba(229, 231, 235, 0.9);
+      }
+
+      .brand-logo img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      .brand-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .brand-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: var(--gray-900);
+      }
+
+      .brand-subtitle {
+        font-size: 0.73rem;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        color: var(--accent-magenta);
       }
 
       nav ul {
-        display: none;
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 0.85rem;
       }
-    }
 
-    @media (max-width: 640px) {
-      .nav-inner {
-        padding-inline: 1.15rem;
+      nav a {
+        color: var(--gray-700);
+        text-decoration: none;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 500;
+        position: relative;
+        padding-bottom: 0.1rem;
+      }
+
+      nav a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -0.2rem;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(
+          to right,
+          var(--accent-magenta),
+          var(--accent-teal)
+        );
+        border-radius: 999px;
+        transition: width var(--transition-fast);
+      }
+
+      nav a:hover::after,
+      nav a:focus-visible::after {
+        width: 100%;
+      }
+
+      .nav-cta {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .nav-pill {
+        font-size: 0.7rem;
+        border-radius: var(--radius-pill);
+        border: 1px solid rgba(209, 213, 219, 0.9);
+        padding: 0.35rem 0.8rem;
+        color: var(--gray-500);
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        white-space: nowrap;
+        background: var(--gray-100);
+      }
+
+      .btn-primary {
+        border-radius: var(--radius-pill);
+        border: none;
+        padding: 0.55rem 1.2rem;
+        background: linear-gradient(
+          135deg,
+          var(--accent-magenta),
+          var(--accent-teal)
+        );
+        color: var(--white);
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        box-shadow: 0 10px 26px rgba(173, 29, 90, 0.35);
+        transition:
+          transform var(--transition-fast),
+          box-shadow var(--transition-fast),
+          filter var(--transition-fast),
+          background-position 0.25s ease-out;
+        background-size: 180% 180%;
+        background-position: 0% 50%;
+      }
+
+      .btn-primary span {
+        transform: translateY(0.5px);
+      }
+
+      .btn-primary:hover {
+        background-position: 100% 50%;
+        transform: translateY(-1px);
+        filter: brightness(1.03);
+        box-shadow: 0 16px 38px rgba(173, 29, 90, 0.42);
+      }
+
+      .btn-primary:active {
+        transform: translateY(0);
+        box-shadow: 0 8px 18px rgba(173, 29, 90, 0.35);
+      }
+
+      main {
+        flex: 1;
       }
 
       .hero {
-        padding-inline: 1.1rem;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 2.4rem 1.5rem 2.4rem;
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+        gap: 2.4rem;
+        align-items: center;
+        position: relative;
       }
 
-      .sections {
-        padding-inline: 1.1rem;
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: -40px;
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(74, 193, 193, 0.12),
+            transparent 60%
+          ),
+          radial-gradient(
+            circle at 110% 0,
+            rgba(173, 29, 90, 0.08),
+            transparent 45%
+          );
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .hero-copy {
+        max-width: 620px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.2rem 0.7rem 0.2rem 0.25rem;
+        border-radius: var(--radius-pill);
+        border: 1px solid rgba(209, 213, 219, 0.9);
+        background: rgba(243, 244, 246, 0.9);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--gray-500);
+        margin-bottom: 0.8rem;
+      }
+
+      .eyebrow-pill {
+        background: var(--accent-teal-soft);
+        border-radius: var(--radius-pill);
+        padding: 0.2rem 0.7rem;
+        color: var(--accent-magenta);
+        font-weight: 600;
+        border: 1px solid rgba(74, 193, 193, 0.5);
+      }
+
+      .hero-title {
+        font-size: clamp(2.1rem, 3vw + 1.2rem, 3rem);
+        line-height: 1.05;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+        color: var(--gray-900);
+        margin: 0 0 0.8rem;
+      }
+
+      .hero-highlight {
+        background: linear-gradient(
+          to right,
+          var(--accent-magenta),
+          var(--accent-teal)
+        );
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .hero-subtitle {
+        font-size: 0.98rem;
+        line-height: 1.6;
+        color: var(--gray-700);
+        max-width: 34rem;
+        margin-bottom: 1.3rem;
+      }
+
+      .hero-metadata {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-bottom: 1.4rem;
+        font-size: 0.8rem;
+        color: var(--gray-500);
+      }
+
+      .meta-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.3rem 0.7rem;
+        border-radius: var(--radius-pill);
+        background: var(--white);
+        border: 1px solid rgba(209, 213, 219, 0.9);
+      }
+
+      .meta-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent-teal);
+        box-shadow: 0 0 0 4px rgba(74, 193, 193, 0.28);
       }
 
       .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 1.3rem;
+      }
+
+      .ghost-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--gray-700);
+        text-decoration: none;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.45rem 0.9rem;
+        border-radius: var(--radius-pill);
+        border: 1px dashed rgba(209, 213, 219, 0.9);
+        background: var(--white);
+        transition:
+          background var(--transition-fast),
+          border-color var(--transition-fast),
+          color var(--transition-fast),
+          box-shadow var(--transition-fast);
+      }
+
+      .ghost-link:hover {
+        background: var(--accent-teal-soft);
+        border-style: solid;
+        border-color: rgba(74, 193, 193, 0.7);
+        box-shadow: 0 6px 18px rgba(74, 193, 193, 0.25);
+      }
+
+      .ghost-link-code {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          'Liberation Mono', 'Courier New', monospace;
+        font-size: 0.8rem;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.5rem;
+        background: var(--gray-100);
+        border: 1px solid rgba(209, 213, 219, 0.9);
+        color: var(--accent-magenta);
+      }
+
+      /* Animal strip */
+
+      .animal-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+
+      .animal-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.32rem 0.7rem;
+        border-radius: var(--radius-pill);
+        background: var(--white);
+        border: 1px solid rgba(229, 231, 235, 0.9);
+        font-size: 0.78rem;
+        color: var(--gray-700);
+      }
+
+      .animal-icon {
+        width: 20px;
+        height: 20px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.98rem;
+        background: var(--accent-teal-soft);
+      }
+
+      .animal-tag.bird .animal-icon {
+        background: var(--accent-magenta-soft);
+      }
+
+      .animal-tag.mammal .animal-icon {
+        background: var(--accent-teal-soft);
+      }
+
+      .animal-tag.owl .animal-icon {
+        background: #fff4cc;
+      }
+
+      .animal-tag.duck .animal-icon {
+        background: #e7f5ff;
+      }
+
+      .animal-tag.fish .animal-icon {
+        background: #e0f2fe;
+      }
+
+      /* QR + form panel */
+
+      .hero-panel {
+        background: var(--white);
+        border-radius: 24px;
+        padding: 1.1rem 1.2rem 1.4rem;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(229, 231, 235, 0.95);
+        display: flex;
         flex-direction: column;
-        align-items: stretch;
+        gap: 1.2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-panel::before {
+        content: '';
+        position: absolute;
+        inset: -30%;
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(74, 193, 193, 0.16),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(173, 29, 90, 0.14),
+            transparent 55%
+          );
+        pointer-events: none;
+        opacity: 0.9;
+      }
+
+      .hero-panel-inner {
+        position: relative;
+        z-index: 1;
       }
 
       .qr-section {
-        flex-direction: row;
+        display: flex;
+        gap: 1rem;
         align-items: center;
       }
 
       .qr-card {
-        width: 112px;
-        height: 112px;
+        width: min(20vw, 16cm);
+        border-radius: 24px;
+        padding: 0.6rem;
+        background: var(--white);
+        box-shadow: 0 14px 32px rgba(15, 23, 42, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(229, 231, 235, 0.95);
+      }
+
+      .qr-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .qr-copy-title {
+        font-size: 0.82rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-magenta);
+        margin-bottom: 0.3rem;
+        font-weight: 600;
+      }
+
+      .qr-copy-main {
+        font-size: 0.95rem;
+        color: var(--gray-900);
+        margin-bottom: 0.35rem;
+        font-weight: 600;
+      }
+
+      .qr-copy-note {
+        font-size: 0.78rem;
+        color: var(--gray-500);
+      }
+
+      .qr-badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem 0.8rem;
+        margin-top: 0.7rem;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        color: var(--gray-500);
+      }
+
+      .qr-badge {
+        padding: 0.18rem 0.6rem;
+        border-radius: var(--radius-pill);
+        border: 1px solid rgba(209, 213, 219, 0.9);
+        background: var(--gray-100);
+      }
+
+      .form-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gray-900);
+        margin-bottom: 0.8rem;
       }
 
       form {
-        grid-template-columns: minmax(0, 1fr);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem 0.9rem;
+        font-size: 0.8rem;
+      }
+
+      .field-full {
+        grid-column: 1 / -1;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.2rem;
+        font-size: 0.76rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--gray-500);
+      }
+
+      label span {
+        color: var(--accent-magenta);
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        border-radius: 0.7rem;
+        border: 1px solid rgba(209, 213, 219, 0.9);
+        padding: 0.5rem 0.55rem;
+        background: var(--gray-100);
+        color: var(--gray-900);
+        font-size: 0.8rem;
+        font-family: inherit;
+        outline: none;
+        transition:
+          border-color var(--transition-fast),
+          box-shadow var(--transition-fast),
+          background var(--transition-fast),
+          transform var(--transition-fast);
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: rgba(156, 163, 175, 0.95);
+      }
+
+      textarea {
+        min-height: 68px;
+        resize: vertical;
+      }
+
+      input:focus-visible,
+      select:focus-visible,
+      textarea:focus-visible {
+        border-color: var(--accent-teal);
+        box-shadow: 0 0 0 1px rgba(74, 193, 193, 0.5);
+        background: var(--white);
+        transform: translateY(-0.5px);
       }
 
       .form-row-inline {
-        grid-template-columns: minmax(0, 1fr);
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
       }
+
+      .form-footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        align-items: center;
+        margin-top: 0.4rem;
+        grid-column: 1 / -1;
+      }
+
+      .form-hint {
+        font-size: 0.72rem;
+        color: var(--gray-500);
+      }
+
+      .form-warning {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.7rem;
+        color: var(--accent-magenta);
+        margin-top: 0.1rem;
+      }
+
+      .form-warning-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--accent-magenta);
+      }
+
+      /* Sections */
 
       .sections {
-        margin-bottom: 2.1rem;
+        max-width: 1120px;
+        margin: 0 auto 2.4rem;
+        padding: 0 1.5rem 1rem;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <div class="page-shell">
-    <header>
-      <div class="nav-inner">
-        <div class="brand">
-          <div class="brand-logo">
-            <!-- Replace src with your actual logo file if needed -->
-            <img id="bc-logo" src="BC Wild Watch Logo.svg" alt="Belgium Campus iTversity logo" />
-          </div>
-          <div class="brand-text">
-            <div class="brand-title">BC WildWatch</div>
-            <div class="brand-subtitle">Belgium Campus iTversity</div>
-          </div>
-        </div>
+      .section-card {
+        border-radius: 24px;
+        background: var(--white);
+        border: 1px solid rgba(229, 231, 235, 0.95);
+        padding: 1.4rem 1.4rem 1.5rem;
+        box-shadow: var(--shadow-soft);
+      }
 
-        <nav aria-label="Main navigation">
-          <ul>
-            <li><a href="#report">Report Sighting</a></li>
-            <li><a href="#sightings">Recent Sightings</a></li>
-          </ul>
-        </nav>
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
 
-        <div class="nav-cta">
-          <div class="nav-pill">Student-Led Conservation</div>
-          <button type="button" class="btn-primary" onclick="scrollToReport()">
-            <span>Report Now</span><span>↗</span>
-          </button>
-        </div>
-      </div>
-    </header>
+      .section-title {
+        font-size: 0.96rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--gray-900);
+      }
 
-    <main>
-      <!-- Hero -->
-      <section class="hero">
-        <div class="hero-copy">
-          <div class="eyebrow">
-            <span class="eyebrow-pill">New</span>
-            Campus biodiversity · Real-time reporting
-          </div>
+      .section-kicker {
+        font-size: 0.72rem;
+        color: var(--accent-teal);
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+      }
 
-          <h1 class="hero-title">
-            Help protect campus wildlife with
-            <span class="hero-highlight">BC WildWatch</span>.
-          </h1>
+      .section-subtitle {
+        font-size: 0.88rem;
+        color: var(--gray-500);
+        margin-bottom: 1rem;
+      }
 
-          <p class="hero-subtitle">
-            Spot a hadeda, Egyptian goose, bunny, or anything wild on campus? Log it in seconds.
-            Your reports help map biodiversity, flag risks, and keep Belgium Campus a safe
-            shared space for students and wildlife.
-          </p>
+      /* Sightings list */
 
-          <div class="hero-metadata">
-            <div class="meta-pill">
-              <span class="meta-dot" aria-hidden="true"></span>
-              Live student sightings
+      .sightings-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.9rem;
+      }
+
+      .sighting-card {
+        border-radius: 18px;
+        border: 1px solid rgba(229, 231, 235, 0.95);
+        background: var(--gray-100);
+        padding: 0.7rem 0.8rem 0.85rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .sighting-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at top right,
+          rgba(74, 193, 193, 0.12),
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+
+      .sighting-chip-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--gray-500);
+        position: relative;
+        z-index: 1;
+      }
+
+      .chip {
+        padding: 0.16rem 0.5rem;
+        border-radius: var(--radius-pill);
+        border: 1px solid rgba(209, 213, 219, 0.9);
+        background: var(--white);
+      }
+
+      .chip-eco {
+        border-color: rgba(74, 193, 193, 0.8);
+        color: var(--accent-teal);
+        background: #f0fbfb;
+      }
+
+      .sighting-title {
+        font-size: 0.86rem;
+        font-weight: 600;
+        color: var(--gray-900);
+        position: relative;
+        z-index: 1;
+      }
+
+      .sighting-meta {
+        font-size: 0.73rem;
+        color: var(--gray-500);
+        position: relative;
+        z-index: 1;
+      }
+
+      .sighting-body {
+        font-size: 0.78rem;
+        color: var(--gray-700);
+        margin-top: 0.15rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .sighting-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-top: 0.25rem;
+        font-size: 0.7rem;
+        color: var(--gray-500);
+        position: relative;
+        z-index: 1;
+      }
+
+      .sighting-badge {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--accent-magenta);
+      }
+
+      #powerapps-app {
+        border: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      /* Footer */
+
+      footer {
+        border-top: 1px solid rgba(229, 231, 235, 0.95);
+        background: var(--white);
+        padding: 0.9rem 1.5rem 1.2rem;
+        font-size: 0.75rem;
+        color: var(--gray-500);
+      }
+
+      .footer-inner {
+        max-width: 1120px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+      }
+
+      .footer-links span {
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        cursor: default;
+      }
+
+      .footer-links a {
+        color: var(--gray-500);
+        text-decoration: none;
+        position: relative;
+      }
+
+      .footer-links a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -0.12rem;
+        width: 0;
+        height: 1px;
+        background: rgba(156, 163, 175, 0.9);
+        transition: width var(--transition-fast);
+      }
+
+      .footer-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Toast */
+
+      .toast {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        max-width: 260px;
+        padding: 0.7rem 0.9rem;
+        border-radius: 0.9rem;
+        background: rgba(74, 193, 193, 0.98);
+        color: #022c22;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.2);
+        font-size: 0.78rem;
+        display: flex;
+        gap: 0.6rem;
+        align-items: flex-start;
+        transform: translateY(140%);
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          transform 0.25s ease-out,
+          opacity 0.25s ease-out;
+        z-index: 40;
+      }
+
+      .toast.visible {
+        transform: translateY(0%);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .toast-icon {
+        width: 16px;
+        height: 16px;
+        border-radius: 999px;
+        border: 2px solid #022c22;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.65rem;
+      }
+
+      .toast-body {
+        flex: 1;
+      }
+
+      .toast-title {
+        font-weight: 600;
+        margin-bottom: 0.1rem;
+      }
+
+      .toast-meta {
+        opacity: 0.9;
+      }
+
+      /* Responsive */
+
+      @media (max-width: 960px) {
+        .hero {
+          grid-template-columns: minmax(0, 1fr);
+          padding-top: 1.6rem;
+        }
+
+        .hero-panel {
+          order: -1;
+        }
+
+        nav ul {
+          display: none;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .nav-inner {
+          padding-inline: 1.15rem;
+        }
+
+        .hero {
+          padding-inline: 1.1rem;
+        }
+
+        .sections {
+          padding-inline: 1.1rem;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .qr-section {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .qr-card {
+          width: 112px;
+          height: 112px;
+        }
+
+        form {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .form-row-inline {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .sections {
+          margin-bottom: 2.1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header>
+        <div class="nav-inner">
+          <div class="brand">
+            <div class="brand-logo">
+              <!-- Replace src with your actual logo file if needed -->
+              <img
+                id="bc-logo"
+                src="BC Wild Watch Logo.svg"
+                alt="Belgium Campus iTversity logo" />
             </div>
-            <div class="meta-pill">Scan &amp; report in under 30s</div>
-            <div class="meta-pill">Built by BC students</div>
+            <div class="brand-text">
+              <div class="brand-title">BC WildWatch</div>
+              <div class="brand-subtitle">Belgium Campus iTversity</div>
+              <sub><i>Unofficial Student Project</i></sub>
+            </div>
           </div>
 
-          <div class="hero-actions">
-            <button type="button" class="btn-primary" onclick="scrollToReport()">
-              <span>Report a sighting</span><span>→</span>
+          <nav aria-label="Main navigation">
+            <ul>
+              <li><a href="#report">Report Sighting</a></li>
+              <li><a href="#sightings">Recent Sightings</a></li>
+            </ul>
+          </nav>
+
+          <div class="nav-cta">
+            <div class="nav-pill">Student-Led Conservation</div>
+            <button
+              type="button"
+              class="btn-primary"
+              onclick="scrollToReport()">
+              <span>Report Now</span><span>↗</span>
             </button>
-
-            <a class="ghost-link" href="#sightings">
-              <span>Browse recent sightings</span>
-              <span class="ghost-link-code">owl · hadeda · rabbit</span>
-            </a>
-          </div>
-
-          <!-- Animal aesthetic strip -->
-          <div class="animal-strip" aria-label="Examples of campus wildlife">
-            <div class="animal-tag bird">
-              <span class="animal-icon">🦆</span>
-              <span>Egyptian geese at the lake</span>
-            </div>
-            <div class="animal-tag owl">
-              <span class="animal-icon">🦉</span>
-              <span>Owls on tall poles</span>
-            </div>
-            <div class="animal-tag mammal">
-              <span class="animal-icon">🐇</span>
-              <span>Rabbits on residence lawns</span>
-            </div>
-            <div class="animal-tag duck">
-              <span class="animal-icon">🦢</span>
-              <span>Water birds &amp; herons</span>
-            </div>
-            <div class="animal-tag fish">
-              <span class="animal-icon">🐟</span>
-              <span>Fish near the spillway</span>
-            </div>
           </div>
         </div>
+      </header>
 
-        <!-- QR + Form panel -->
-        <aside class="hero-panel" aria-label="BC WildWatch quick access and report form">
-          <div class="hero-panel-inner">
-            <div class="qr-section">
-              <div class="qr-card">
-                <!-- Replace src with your actual QR code file if needed -->
-                <img id="bc-qr" src="BC Wild Watch QRCode.svg" alt="Scan to open BC WildWatch on your phone" />
+      <main>
+        <!-- Hero -->
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow">
+              <span class="eyebrow-pill">New</span>
+              Campus biodiversity · Real-time reporting
+            </div>
+
+            <h1 class="hero-title">
+              Help protect campus wildlife with
+              <span class="hero-highlight">BC WildWatch</span>.
+            </h1>
+
+            <p class="hero-subtitle">
+              Spot a hadeda, Egyptian goose, bunny, or anything wild on campus?
+              Log it in seconds. Your reports help map biodiversity, flag risks,
+              and keep Belgium Campus a safe shared space for students and
+              wildlife.
+            </p>
+
+            <div class="hero-metadata">
+              <div class="meta-pill">
+                <span class="meta-dot" aria-hidden="true"></span>
+                Live student sightings
               </div>
-              <div>
-                <div class="qr-copy-title">Scan on campus</div>
-                <div class="qr-copy-main">
-                  Open the WildWatch form instantly on your phone.
-                </div>
-                <p class="qr-copy-note">
-                  Look out for this QR code on lab doors, noticeboards, and common areas to report
-                  a sighting without typing the URL.
-                </p>
+              <div class="meta-pill">Scan &amp; report in under 30s</div>
+              <div class="meta-pill">Built by BC students</div>
+            </div>
 
-                <div class="qr-badge-row">
-                  <span class="qr-badge">Works with BC Wi-Fi</span>
-                  <span class="qr-badge">No login required</span>
+            <!-- Animal aesthetic strip -->
+            <div class="animal-strip" aria-label="Examples of campus wildlife">
+              <div class="animal-tag bird">
+                <span class="animal-icon">🦆</span>
+                <span>Egyptian geese at the lake</span>
+              </div>
+              <div class="animal-tag owl">
+                <span class="animal-icon">🦉</span>
+                <span>Owls on tall poles</span>
+              </div>
+              <div class="animal-tag mammal">
+                <span class="animal-icon">🐇</span>
+                <span>Rabbits on residence lawns</span>
+              </div>
+              <div class="animal-tag duck">
+                <span class="animal-icon">🦢</span>
+                <span>Water birds &amp; herons</span>
+              </div>
+              <div class="animal-tag fish">
+                <span class="animal-icon">🐟</span>
+                <span>Fish near the spillway</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- QR + Form panel -->
+          <aside
+            class="hero-panel"
+            aria-label="BC WildWatch quick access and report form">
+            <div class="hero-panel-inner">
+              <div class="qr-section">
+                <div class="qr-card">
+                  <!-- Replace src with your actual QR code file if needed -->
+                  <img
+                    id="bc-qr"
+                    src="BC Wild Watch QRCode.svg"
+                    alt="Scan to open BC WildWatch on your phone" />
+                </div>
+                <div>
+                  <div class="qr-copy-title">Scan on campus</div>
+                  <div class="qr-copy-main">
+                    Open the WildWatch form instantly on your phone.
+                  </div>
+                  <p class="qr-copy-note">
+                    Look out for this QR code on lab doors, noticeboards, and
+                    common areas to report a sighting without typing the URL.
+                  </p>
+
+                  <div class="qr-badge-row">
+                    <span class="qr-badge">Works with BC Wi-Fi</span>
+                  </div>
                 </div>
               </div>
             </div>
-
-            <hr style="
-                border: none;
-                border-top: 1px solid rgba(229, 231, 235, 0.95);
-                margin: 0.9rem 0 0.8rem;
-              " />
-
-            <!-- Quick report form -->
-            <h2 id="report" class="form-title">Quick Sighting Report</h2>
-            <form id="sighting-form">
-              <div class="field-full">
-                <div class="form-row-inline">
-                  <div>
-                    <label for="reporter-name">Your name (optional)</label>
-                    <input
-                      id="reporter-name"
-                      name="reporterName"
-                      type="text"
-                      placeholder="e.g. Naledi M."
-                    />
-                  </div>
-                  <div>
-                    <label for="student-id">Student / staff number</label>
-                    <input
-                      id="student-id"
-                      name="studentId"
-                      type="text"
-                      placeholder="e.g. BC20231234"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <label for="animal-type">Animal type <span>*</span></label>
-                <select id="animal-type" name="animalType" required>
-                  <option value="">Select animal type</option>
-                  <option value="Bird">Bird</option>
-                  <option value="Mammal">Mammal</option>
-                  <option value="Reptile">Reptile</option>
-                  <option value="Insect">Insect</option>
-                  <option value="Amphibian">Amphibian</option>
-                  <option value="Other">Other / Unsure</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="count">How many?</label>
-                <input
-                  id="count"
-                  name="count"
-                  type="number"
-                  min="1"
-                  step="1"
-                  placeholder="e.g. 3"
-                />
-              </div>
-
-              <div>
-                <label for="location">Campus location <span>*</span></label>
-                <input
-                  id="location"
-                  name="location"
-                  type="text"
-                  required
-                  placeholder="e.g. Lake, Residence lawn, Parking A"
-                />
-              </div>
-
-              <div>
-                <label for="time">Date &amp; time</label>
-                <input id="time" name="time" type="datetime-local" />
-              </div>
-
-              <div class="field-full">
-                <label for="behaviour">What did you see? <span>*</span></label>
-                <textarea
-                  id="behaviour"
-                  name="behaviour"
-                  required
-                  placeholder="Describe the animal, its behaviour, and any concerns (injured, trapped, close to traffic, etc.)."
-                ></textarea>
-              </div>
-
-              <div class="field-full">
-                <label for="photo">Optional photo</label>
-                <input
-                  id="photo"
-                  name="photo"
-                  type="file"
-                  accept="image/*"
-                  style="padding-block: 0.35rem"
-                />
-                <div class="form-warning">
-                  <span class="form-warning-dot" aria-hidden="true"></span>
-                  <span>Please do not put yourself or the animal at risk to get a photo.</span>
-                </div>
-              </div>
-
-              <div class="form-footer">
-                <button type="submit" class="btn-primary">
-                  <span>Submit sighting</span><span>✓</span>
-                </button>
-                <p class="form-hint">
-                  This demo saves your report locally. A real deployment would send it to BC staff
-                  or a database.
-                </p>
-              </div>
-            </form>
-          </div>
-        </aside>
-      </section>
-
-      <!-- Recent sightings only -->
-      <section class="sections">
-        <section class="section-card" id="sightings">
-          <header class="section-header">
-            <div>
-              <div class="section-title">Recent Campus Sightings</div>
-              <p class="section-subtitle">
-                Example reports from BC WildWatch. New student sightings appear at the top of this
-                list.
-              </p>
-            </div>
-            <div class="section-kicker">Live feed · sample data</div>
-          </header>
-
-          <div class="sightings-list" id="sightings-list">
-            <!-- Sample cards -->
-            <article class="sighting-card">
-              <div class="sighting-chip-row">
-                <span class="chip chip-eco">Bird · Hadeda ibis</span>
-                <span>Lake</span>
-              </div>
-              <h3 class="sighting-title">Foraging at the water’s edge</h3>
-              <p class="sighting-meta">Submitted by Lerato · Today · 08:12</p>
-              <p class="sighting-body">
-                Group of hadedas feeding calmly near the lakeside benches. Students passed
-                by without disturbing them.
-              </p>
-              <div class="sighting-footer">
-                <span>Count: 5</span>
-                <span class="sighting-badge">Low risk</span>
-              </div>
-            </article>
-
-            <article class="sighting-card">
-              <div class="sighting-chip-row">
-                <span class="chip chip-eco">Mammal · Rabbit</span>
-                <span>Residence lawn</span>
-              </div>
-              <h3 class="sighting-title">Young rabbit near footpath</h3>
-              <p class="sighting-meta">Submitted by Ayesha · Yesterday · 19:43</p>
-              <p class="sighting-body">
-                Small rabbit grazing close to the walkway between residence and cafeteria.
-                Looked healthy and moved away slowly when approached.
-              </p>
-              <div class="sighting-footer">
-                <span>Count: 1</span>
-                <span class="sighting-badge">Observe only</span>
-              </div>
-            </article>
-
-            <article class="sighting-card">
-              <div class="sighting-chip-row">
-                <span class="chip">Reptile · Snake (unsure)</span>
-                <span>Parking B</span>
-              </div>
-              <h3 class="sighting-title">Thin brown snake on curb</h3>
-              <p class="sighting-meta">Submitted by Anonymous · Yesterday · 14:21</p>
-              <p class="sighting-body">
-                Short snake seen crossing the road near cars. Moved quickly into the
-                bushes. Security notified by student.
-              </p>
-              <div class="sighting-footer">
-                <span>Count: 1</span>
-                <span class="sighting-badge">Flag for safety</span>
-              </div>
-            </article>
-          </div>
+          </aside>
         </section>
-      </section>
-      <iframe 
-        src="https://apps.powerapps.com/play/e/default-ea1a909b-6600-4a25-82a5-0c6ed7d0513b/a/34e8d203-c9e3-4305-9eb6-0458ea26488c?tenantId=ea1a909b-6600-4a25-82a5-0c6ed7d0513b&hint=b87576b0-94f3-4f15-8f33-c960dd2cfb6c&sourcetime=1771938771758" 
-        width="100%" 
-        height="800px" 
-        style="border:none;">
-      </iframe>
 
-      
-    </main>
+        <!-- Power Apps App Integration -->
+        <iframe
+          id="powerapps-app"
+          title="BC Wild Watch"
+          src="https://apps.powerapps.com/play/e/default-ea1a909b-6600-4a25-82a5-0c6ed7d0513b/a/34e8d203-c9e3-4305-9eb6-0458ea26488c?tenantId=ea1a909b-6600-4a25-82a5-0c6ed7d0513b&hint=b87576b0-94f3-4f15-8f33-c960dd2cfb6c&sourcetime=1771938771758"></iframe>
+      </main>
 
-    <footer>
-      <div class="footer-inner">
-        <div>
-          &copy; <span id="year"></span> BC WildWatch · Student conservation initiative
-          at Belgium Campus iTversity.
+      <footer>
+        <div class="footer-inner">
+          <div>
+            &copy; <span id="year"></span> BC WildWatch · Student conservation
+            initiative at Belgium Campus iTversity.
+          </div>
+          <div class="footer-links">
+            <span>Inspired by</span>
+            <a href="#report">Campus reporting culture</a>
+            <a href="#sightings">Data-driven ecology</a>
+          </div>
         </div>
-        <div class="footer-links">
-          <span>Inspired by</span>
-          <a href="#report">Campus reporting culture</a>
-          <a href="#sightings">Data-driven ecology</a>
-        </div>
-      </div>
-    </footer>
-  </div>
+      </footer>
+    </div>
 
-  <!-- Toast -->
-  <div class="toast" id="toast" role="status" aria-live="polite">
-    <div class="toast-icon">✓</div>
-    <div class="toast-body">
-      <div class="toast-title">Sighting captured</div>
-      <div class="toast-meta">
-        This demo stored your report locally. In production, it would be forwarded to BC staff.
+    <!-- Toast -->
+    <div class="toast" id="toast" role="status" aria-live="polite">
+      <div class="toast-icon">✓</div>
+      <div class="toast-body">
+        <div class="toast-title">Sighting captured</div>
+        <div class="toast-meta">
+          This demo stored your report locally. In production, it would be
+          forwarded to BC staff.
+        </div>
       </div>
     </div>
-  </div>
 
-  <script>
-    function scrollToReport() {
-      const form = document.getElementById("report");
-      if (form) {
-        form.scrollIntoView({ behavior: "smooth", block: "start" });
+    <script>
+      function scrollToReport() {
+        const form = document.getElementById('powerapps-app')
+        if (form) {
+          form.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
       }
-    }
-
-    // Light JS for demo: toast + add new sighting card locally
-    (function () {
-      const form = document.getElementById("sighting-form");
-      const toast = document.getElementById("toast");
-      const sightingsList = document.getElementById("sightings-list");
-      const yearSpan = document.getElementById("year");
-
-      if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-      }
-
-      function showToast() {
-        if (!toast) return;
-        toast.classList.add("visible");
-        setTimeout(() => toast.classList.remove("visible"), 3600);
-      }
-
-      function buildCardFromForm(data) {
-        const card = document.createElement("article");
-        card.className = "sighting-card";
-
-        const chipRow = document.createElement("div");
-        chipRow.className = "sighting-chip-row";
-
-        const chip = document.createElement("span");
-        chip.className = "chip chip-eco";
-        chip.textContent =
-          (data.animalType || "Animal") +
-          (data.animalExtra ? " · " + data.animalExtra : "");
-
-        const loc = document.createElement("span");
-        loc.textContent = data.location || "Campus";
-
-        chipRow.appendChild(chip);
-        chipRow.appendChild(loc);
-
-        const title = document.createElement("h3");
-        title.className = "sighting-title";
-        title.textContent = "New report from " + (data.reporter || "Anonymous");
-
-        const meta = document.createElement("p");
-        meta.className = "sighting-meta";
-
-        const date = new Date();
-        const timeStr = date.toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        });
-        meta.textContent = `Submitted just now · ${timeStr}`;
-
-        const body = document.createElement("p");
-        body.className = "sighting-body";
-        body.textContent = data.behaviour || "";
-
-        const footer = document.createElement("div");
-        footer.className = "sighting-footer";
-
-        const left = document.createElement("span");
-        left.textContent = "Count: " + (data.count || "1");
-
-        const badge = document.createElement("span");
-        badge.className = "sighting-badge";
-        badge.textContent = "Student added";
-
-        footer.appendChild(left);
-        footer.appendChild(badge);
-
-        card.appendChild(chipRow);
-        card.appendChild(title);
-        card.appendChild(meta);
-        card.appendChild(body);
-        card.appendChild(footer);
-
-        return card;
-      }
-
-      if (form && sightingsList) {
-        form.addEventListener("submit", function (event) {
-          event.preventDefault();
-
-          const animalType = form.animalType.value;
-          const location = form.location.value;
-          const behaviour = form.behaviour.value;
-
-          if (!animalType || !location || !behaviour) {
-            alert(
-              "Please fill in animal type, location, and what you saw so we can use your report."
-            );
-            return;
-          }
-
-          const data = {
-            reporter: form.reporterName.value.trim(),
-            animalType: form.animalType.value,
-            animalExtra: "",
-            count: form.count.value,
-            location: form.location.value.trim(),
-            behaviour: form.behaviour.value.trim(),
-          };
-
-          // Add card to top of list
-          const card = buildCardFromForm(data);
-          sightingsList.prepend(card);
-
-          // Reset form (except optional file field)
-          form.reset();
-
-          showToast();
-        });
-      }
-    })();
-  </script>
-</body>
+      /* Setup iframe intersect observer */ ;(() => {
+        const iframe = document.querySelector('#powerapps-app')
+        const observer = new IntersectionObserver(
+          entries => {
+            const navHeaders = [
+              ...document.querySelectorAll('.page-shell > header'),
+            ].filter(h => h instanceof HTMLElement)
+            for (const entry of entries) {
+              if (!(entry.target instanceof HTMLElement)) continue
+              for (const header of navHeaders) {
+                if (entry.isIntersecting && entry.intersectionRatio > 0.8) {
+                  header.classList.toggle('hidden', true)
+                  iframe.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                } else {
+                  header.classList.toggle('hidden', false)
+                }
+              }
+            }
+          },
+          { threshold: 0.8 },
+        )
+        observer.observe(iframe)
+      })()
+    </script>
+  </body>
 </html>

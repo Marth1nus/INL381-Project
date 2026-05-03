@@ -1,8 +1,47 @@
 # INL301-Project-2026
 
+## See [`Group Tasks.md`](https://github.com/Marth1nus/INL381-Project/blob/master/Group%20Tasks.md) for work that needs to be done
+
 ## [Deployment Link](https://bcwildwatch.co.za)
 
-## See [`Group Tasks.md`](https://github.com/Marth1nus/INL381-Project/blob/master/Group%20Tasks.md) for work that needs to be done
+<div style="
+  display        : grid;
+  grid-auto-flow : column;
+  grid-template  : auto auto / auto auto 1fr;
+  gap            : 0em 1em;
+">
+
+### Logo
+
+<a
+  href="https://bcwildwatch.co.za">
+<img
+  alt="BC Wild Watch Logo"
+  src="public/BC%20Wild%20Watch%20Logo.svg"
+  style="
+    width            : 8em;
+    background-color : #fffc;
+    border-radius    : 1em;
+    padding          : 0.5em;
+  "
+/></a>
+
+### Qr Code
+
+<a
+  href="https://bcwildwatch.co.za">
+<img
+  alt="BC Wild Watch QrCode"
+  src="public/BC%20Wild%20Watch%20QRCode.svg"
+  style="
+    width            : 8em;
+    background-color : #fffc;
+    border-radius    : 1em;
+    padding          : 0.5em;
+  "
+/></a>
+
+</div>
 
 ## Group Members
 
