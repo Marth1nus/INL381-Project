@@ -25,7 +25,7 @@
   - [ ] Demonstration sequence execution (practice recording)
   - [ ] Final recording
 
-# RACI
+## RACI
 
 | Task/Activity                               | Project Manager | Designer | Developer | QA Tester | Marketing Lead |
 | :------------------------------------------ | :-------------: | :------: | :-------: | :-------: | :------------: |
