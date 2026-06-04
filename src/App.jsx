@@ -17,6 +17,7 @@ export default function App() {
       const rect = iframe.getBoundingClientRect()
       if (rect.top < window.innerHeight * 0.2) {
         setHeaderHidden(true)
+        iframe.scrollIntoView({ behavior: 'smooth', block: 'start' })
       } else {
         setHeaderHidden(false)
       }
@@ -40,7 +41,6 @@ export default function App() {
     setTimeout(() => setToast(null), 3000)
   }
 
-
   const handleMicrosoftLogin = async () => {
     try {
       // This would be configured with your Entra ID credentials
@@ -57,7 +57,6 @@ export default function App() {
       console.error(error)
     }
   }
- 
 
   const handleLogout = () => {
     setUser(null)
@@ -65,7 +64,7 @@ export default function App() {
   }
 
   return (
-    <div className="page-shell">
+    <div className='page-shell'>
       <Header
         user={user}
         onLogout={handleLogout}
@@ -73,10 +72,7 @@ export default function App() {
         hidden={headerHidden}
       />
       <main>
-        <Hero
-          user={user}
-          onReportClick={scrollToReport}
-        />
+        <Hero user={user} onReportClick={scrollToReport} />
         <PowerAppsEmbed />
       </main>
       <Footer />

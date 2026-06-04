@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["hadeda", "powerapps", "Tversity", "Versity"]
+  "cSpell.words": ["hadeda", "powerapps", "Tversity", "Versity"],
+  "liveServer.settings.root": "/dist/"
 }
